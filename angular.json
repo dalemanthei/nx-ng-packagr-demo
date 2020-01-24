@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "projects": {
+    "dmv-app": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/dmv-app",
+      "sourceRoot": "apps/dmv-app/src",
+      "prefix": "dmv",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/dmv-app",
+            "index": "apps/dmv-app/src/index.html",
+            "main": "apps/dmv-app/src/main.ts",
+            "polyfills": "apps/dmv-app/src/polyfills.ts",
+            "tsConfig": "apps/dmv-app/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/dmv-app/src/favicon.ico",
+              "apps/dmv-app/src/assets"
+            ],
+            "styles": ["apps/dmv-app/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/dmv-app/src/environments/environment.ts",
+                  "with": "apps/dmv-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "dmv-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dmv-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dmv-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/dmv-app/tsconfig.app.json",
+              "apps/dmv-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/dmv-app/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/dmv-app/jest.config.js",
+            "tsConfig": "apps/dmv-app/tsconfig.spec.json",
+            "setupFile": "apps/dmv-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "dmv-app-e2e": {
+      "root": "apps/dmv-app-e2e",
+      "sourceRoot": "apps/dmv-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/dmv-app-e2e/cypress.json",
+            "tsConfig": "apps/dmv-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "dmv-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dmv-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/dmv-app-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/dmv-app-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "dmv-app"
+}

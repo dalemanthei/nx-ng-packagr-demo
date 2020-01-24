@@ -1,0 +1,22 @@
+{
+  "npmScope": "dmv",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "dmv-app": {
+      "tags": []
+    },
+    "dmv-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dmv-app"]
+    }
+  }
+}
