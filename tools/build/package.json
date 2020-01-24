@@ -1,0 +1,24 @@
+{
+  "$schema": "./../../node_modules/ng-packagr/package.schema.json",
+  "name": "@dmv/demo",
+  "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "dmv",
+    "ng-packagr",
+    "nx",
+    "angular-cli",
+    "monorepo"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/core": "^8.0.0 || ^9.0.0-0",
+    "@angular/common": "^8.0.0 || ^9.0.0-0"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

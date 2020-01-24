@@ -17,6 +17,15 @@
     "dmv-app-e2e": {
       "tags": [],
       "implicitDependencies": ["dmv-app"]
+    },
+    "core": {
+      "tags": []
+    },
+    "button": {
+      "tags": []
+    },
+    "link": {
+      "tags": []
     }
   }
 }

@@ -15,7 +15,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@dmv/demo/core": ["libs/core/src/index.ts"],
+      "@dmv/demo/button": ["libs/button/src/index.ts"],
+      "@dmv/demo/link": ["libs/link/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
