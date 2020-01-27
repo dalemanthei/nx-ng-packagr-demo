@@ -1,84 +1,92 @@
 # Dmv
 
-This project was generated using [Nx](https://nx.dev).
+This project demonstrates how to build a monorepo of dependent components that are installed as a single package. It builds a library of components similar to Angular Material.
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
+Most of the `nx` commands work as expected with the exception of those that are dependent the `dep-graph`. Commands that use `affected` don't work either.
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+# Building The Library
 
-## Quick Start & Documentation
+To build the component library for distribution run
 
-[Nx Documentation](https://nx.dev/angular)
+`npm run build-libs`
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+This triggers a sequence of build scripts in the `package.json` to build the components in their order of dependencies.
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+# Consuming The Library
 
-## Adding capabilities to your workspace
+This library builds the set of components that are installed using a form like
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+`npm install @namespace/library`
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+This installs the collection of components in the project.
 
-Below are some plugins which you can add to your workspace:
+Angular Material supports 2 styles of importing into applications:
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+```
+import { CoreModule } from '@dmv/demo'`
+import { CoreModule } from '@dmv/demo/core'
+```
 
-## Generate an application
+This repo supports the latter style only.
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+# Project Structure and Building
 
-> You can use any of the plugins above to generate applications as well.
+In `nx` parlance, a *library* is a unit of dependency and build which can include one or more angular *components*.
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+In this instance, we treat and think of the `nx` library as a component.
 
-## Generate a library
+Building the component for distribution is a matter of configuring the `ng-packagr` control files.
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+## Configure Component `ng-package.json`
 
-> You can also use any of the plugins above to generate libraries as well.
+Define the destination based on the desired distribution package structure:
 
-Libraries are sharable across libraries and applications. They can be imported from `@dmv/mylib`.
+```
+  "dest": "../../dist/@dmv/demo/button",
+```
 
-## Development server
+The `umdId` provides the id for the module. The map of `umdModuleIds` keeps the complier from guessing about the dependencies:
 
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+```
+    "umdId": "dmv.button",
+    "umdModuleIds": {
+      "@dmv/demo/core": "dmv.core",
+      "@dmv/demo/link": "dmv.link"
+    }
+```
 
-## Code scaffolding
+## Configure Component `package.json`
 
-Run `ng g component my-component --project=my-app` to generate a new component.
+The main thing to configure here is the component name including the npmjs namespace:
 
-## Build
+```
+  "name": "@dmv/demo/button",
+```
 
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Configure Component `tsconfig.lib.json`
 
-## Running unit tests
+When a component is built it reads the source for the component from the `src/libs` path. The dependencies for the component must be resolved from the previously built components. To enable this we need to add the path to the compiler options:
 
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+```
+  "compilerOptions": {
+    ...
+    "paths": {
+      "@dmv/*": ["dist/@dmv/*"]
+    }
+  },
+```
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+## Configure Repo `tsconfig.json`
 
-## Running end-to-end tests
+In order for Visual Studio Code to resolve the dependencies we need to configure the components in the project level `tsconfig.json`
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+```
+  "compilerOptions": {
+    ...
+    "paths": {
+      "@dmv/demo/core": ["libs/core/src/index.ts"],
+      "@dmv/demo/button": ["libs/button/src/index.ts"],
+      "@dmv/demo/link": ["libs/link/src/index.ts"]
+    }
+  },
+```
