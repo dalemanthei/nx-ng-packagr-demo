@@ -1,6 +1,6 @@
-import { CoreModule } from '@dmv/demo/core';
-import { ButtonModule } from '@dmv/demo/button';
-import { LinkModule } from '@dmv/demo/link';
+import { CoreModule } from '@dmv/core';
+import { ButtonModule } from '@dmv/button';
+import { LinkModule } from '@dmv/link';
 import { NgModule } from '@angular/core';
 
 @NgModule({

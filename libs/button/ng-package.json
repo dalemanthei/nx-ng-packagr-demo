@@ -1,12 +1,12 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/@dmv/demo/button",
+  "dest": "../../dist/@dmv/button",
   "lib": {
     "entryFile": "./src/index.ts",
     "umdId": "dmv.button",
     "umdModuleIds": {
-      "@dmv/demo/core": "dmv.core",
-      "@dmv/demo/link": "dmv.link"
+      "@dmv/core": "dmv.core",
+      "@dmv/link": "dmv.link"
     }
   },
   "whitelistedNonPeerDependencies": []

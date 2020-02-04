@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/@dmv/demo/core",
+  "dest": "../../dist/@dmv/core",
   "lib": {
     "entryFile": "./src/index.ts",
     "umdId": "dmv.core"

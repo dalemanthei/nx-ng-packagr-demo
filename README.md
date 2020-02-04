@@ -24,7 +24,7 @@ Angular Material supports 2 styles of importing into applications:
 
 ```
 import { CoreModule } from '@dmv/demo'`
-import { CoreModule } from '@dmv/demo/core'
+import { CoreModule } from '@dmv/core'
 ```
 
 This repo supports the latter style only.
@@ -42,7 +42,7 @@ Building the component for distribution is a matter of configuring the `ng-packa
 Define the destination based on the desired distribution package structure:
 
 ```
-  "dest": "../../dist/@dmv/demo/button",
+  "dest": "../../dist/@dmv/button",
 ```
 
 The `umdId` provides the id for the module. The map of `umdModuleIds` keeps the complier from guessing about the dependencies:
@@ -50,8 +50,8 @@ The `umdId` provides the id for the module. The map of `umdModuleIds` keeps the 
 ```
     "umdId": "dmv.button",
     "umdModuleIds": {
-      "@dmv/demo/core": "dmv.core",
-      "@dmv/demo/link": "dmv.link"
+      "@dmv/core": "dmv.core",
+      "@dmv/link": "dmv.link"
     }
 ```
 
@@ -60,7 +60,7 @@ The `umdId` provides the id for the module. The map of `umdModuleIds` keeps the 
 The main thing to configure here is the component name including the npmjs namespace:
 
 ```
-  "name": "@dmv/demo/button",
+  "name": "@dmv/button",
 ```
 
 ## Configure Component `tsconfig.lib.json`
@@ -84,9 +84,9 @@ In order for Visual Studio Code to resolve the dependencies we need to configure
   "compilerOptions": {
     ...
     "paths": {
-      "@dmv/demo/core": ["libs/core/src/index.ts"],
-      "@dmv/demo/button": ["libs/button/src/index.ts"],
-      "@dmv/demo/link": ["libs/link/src/index.ts"]
+      "@dmv/core": ["libs/core/src/index.ts"],
+      "@dmv/button": ["libs/button/src/index.ts"],
+      "@dmv/link": ["libs/link/src/index.ts"]
     }
   },
 ```

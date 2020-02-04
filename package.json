@@ -26,7 +26,7 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "prebuild-libs": "rimraf dist/@dmv/demo/*",
+    "prebuild-libs": "rimraf dist/@dmv/*",
     "build-libs": "npm-run-all -s build-libs:p*",
     "build-libs:p0": "npm-run-all -p build:p0:*",
     "build-libs:p1": "npm-run-all -p build:p1:*",
@@ -35,7 +35,8 @@
     "build:p0:core": "ng build core",
     "build:p1:link": "ng build link",
     "build:p2:button": "ng build button",
-    "build:p9:dmv": "cp tools/build/* dist/@dmv/demo && cp ./LICENSE dist/@dmv/demo" },
+    "build:p9:dmv": "cp tools/build/* dist/@dmv/demo && cp ./LICENSE dist/@dmv/demo"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.0",

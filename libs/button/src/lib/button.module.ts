@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './button.component';
-import { CoreModule } from '@dmv/demo/core';
-import { LinkModule } from '@dmv/demo/link';
+import { CoreModule } from '@dmv/core';
+import { LinkModule } from '@dmv/link';
 
 @NgModule({
   imports: [CommonModule, CoreModule, LinkModule],
