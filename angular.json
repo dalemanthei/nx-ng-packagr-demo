@@ -126,33 +126,33 @@
     },
     "core": {
       "projectType": "library",
-      "root": "libs/core",
-      "sourceRoot": "libs/core/src",
+      "root": "libs/demo/core",
+      "sourceRoot": "libs/demo/core/src",
       "prefix": "dmv",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "libs/core/tsconfig.lib.json",
-            "project": "libs/core/ng-package.json"
+            "tsConfig": "libs/demo/core/tsconfig.lib.json",
+            "project": "libs/demo/core/ng-package.json"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/core/tsconfig.lib.json",
-              "libs/core/tsconfig.spec.json"
+              "libs/demo/core/tsconfig.lib.json",
+              "libs/demo/core/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/core/**"]
+            "exclude": ["**/node_modules/**", "!libs/demo/core/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/core/jest.config.js",
-            "tsConfig": "libs/core/tsconfig.spec.json",
-            "setupFile": "libs/core/src/test-setup.ts"
+            "jestConfig": "libs/demo/core/jest.config.js",
+            "tsConfig": "libs/demo/core/tsconfig.spec.json",
+            "setupFile": "libs/demo/core/src/test-setup.ts"
           }
         }
       },
@@ -160,33 +160,33 @@
     },
     "button": {
       "projectType": "library",
-      "root": "libs/button",
-      "sourceRoot": "libs/button/src",
+      "root": "libs/demo/button",
+      "sourceRoot": "libs/demo/button/src",
       "prefix": "dmv",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "libs/button/tsconfig.lib.json",
-            "project": "libs/button/ng-package.json"
+            "tsConfig": "libs/demo/button/tsconfig.lib.json",
+            "project": "libs/demo/button/ng-package.json"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/button/tsconfig.lib.json",
-              "libs/button/tsconfig.spec.json"
+              "libs/demo/button/tsconfig.lib.json",
+              "libs/demo/button/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/button/**"]
+            "exclude": ["**/node_modules/**", "!libs/demo/button/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/button/jest.config.js",
-            "tsConfig": "libs/button/tsconfig.spec.json",
-            "setupFile": "libs/button/src/test-setup.ts"
+            "jestConfig": "libs/demo/button/jest.config.js",
+            "tsConfig": "libs/demo/button/tsconfig.spec.json",
+            "setupFile": "libs/demo/button/src/test-setup.ts"
           }
         }
       },
@@ -198,33 +198,33 @@
     },
     "link": {
       "projectType": "library",
-      "root": "libs/link",
-      "sourceRoot": "libs/link/src",
+      "root": "libs/demo/link",
+      "sourceRoot": "libs/demo/link/src",
       "prefix": "dmv",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "libs/link/tsconfig.lib.json",
-            "project": "libs/link/ng-package.json"
+            "tsConfig": "libs/demo/link/tsconfig.lib.json",
+            "project": "libs/demo/link/ng-package.json"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/link/tsconfig.lib.json",
-              "libs/link/tsconfig.spec.json"
+              "libs/demo/link/tsconfig.lib.json",
+              "libs/demo/link/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/link/**"]
+            "exclude": ["**/node_modules/**", "!libs/demo/link/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/link/jest.config.js",
-            "tsConfig": "libs/link/tsconfig.spec.json",
-            "setupFile": "libs/link/src/test-setup.ts"
+            "jestConfig": "libs/demo/link/jest.config.js",
+            "tsConfig": "libs/demo/link/tsconfig.spec.json",
+            "setupFile": "libs/demo/link/src/test-setup.ts"
           }
         }
       },

@@ -16,9 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@dmv/demo/core": ["libs/core/src/index.ts"],
-      "@dmv/demo/button": ["libs/button/src/index.ts"],
-      "@dmv/demo/link": ["libs/link/src/index.ts"]
+      "@dmv/demo/core": ["libs/demo/core/src/index.ts"],
+      "@dmv/demo/button": ["libs/demo/button/src/index.ts"],
+      "@dmv/demo/link": ["libs/demo/link/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
